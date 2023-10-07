@@ -3,7 +3,9 @@
 
 ## 環境
 
-## update
+## Github Actions
+
+## 更新手順
 
 ### functions
 
