@@ -8,6 +8,10 @@
 ## 更新手順
 
 ### functions
+PortfolioLINEBotをカレントディレクトリとして
+```
+$ firebase deploy --only functions
+```
 
 ### hosting
 
