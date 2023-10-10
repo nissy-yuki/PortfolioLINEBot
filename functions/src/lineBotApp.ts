@@ -1,6 +1,6 @@
 import * as express from "express";
 import * as line from "@line/bot-sdk";
-import {isReplyableEvent} from "./TypeCheck";
+import {isReplyableEvent} from "./typeCheck";
 
 const config = {
   channelAccessToken: process.env.LINE_ACCESS_TOKEN || "",
