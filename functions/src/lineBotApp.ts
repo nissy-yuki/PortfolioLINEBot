@@ -1,7 +1,9 @@
 import * as functions from "firebase-functions";
 import * as express from "express";
 import * as line from "@line/bot-sdk";
-import {isReplyableEvent} from "./typeCheck";
+import {isMessageEvent, isReplyableEvent, isTextMessage} from "./typeCheck";
+import {MessageHandlerFactory} from "./MessageHandlerFactory";
+import {UnsupportedHandlerFactory} from "./UnsupportedHandlerFactory";
 
 const config = {
   channelSecret: functions.config().line.channel_secret || "",
@@ -13,7 +15,7 @@ export const lineBotApp = express();
 
 process.env.TZ = "Asia/Tokyo";
 
-lineBotApp.post("/", line.middleware(config), (req, res) => {
+lineBotApp.post("/webhook", line.middleware(config), (req, res) => {
   Promise.all(req.body.events.map(handleEvent))
     .then(() => res.status(200).end())
     .catch((err) => {
@@ -29,10 +31,21 @@ lineBotApp.post("/", line.middleware(config), (req, res) => {
  */
 async function handleEvent(event: line.WebhookEvent) {
   if (isReplyableEvent(event)) {
-    return client.replyMessage(event.replyToken, {
-      type: "text",
-      text: "message",
-    });
+    const userId = event.source.userId;
+    if (!userId) throw new Error("userIdが取得できませんでした");
+    let factory = new UnsupportedHandlerFactory();
+    if (isMessageEvent(event)) {
+      let message = "message";
+      if (isTextMessage(event.message)) {
+        message = event.message.text;
+      } else {
+        message = event.message.type;
+      }
+      factory = new MessageHandlerFactory(message, userId);
+    }
+    const handler = factory.create();
+    const message = await handler.getMessage();
+    return client.replyMessage(event.replyToken, message);
   }
   return Promise.resolve();
 }
