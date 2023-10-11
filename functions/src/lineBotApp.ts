@@ -1,10 +1,11 @@
+import * as functions from "firebase-functions";
 import * as express from "express";
 import * as line from "@line/bot-sdk";
 import {isReplyableEvent} from "./typeCheck";
 
 const config = {
-  channelAccessToken: process.env.LINE_ACCESS_TOKEN || "",
-  channelSecret: process.env.LINE_CHANNEL_SECRET || "",
+  channelSecret: functions.config().line.channel_secret || "",
+  channelAccessToken: functions.config().line.channel_access_token || "",
 };
 
 const client = new line.Client(config);
@@ -33,6 +34,7 @@ async function handleEvent(event: line.WebhookEvent) {
       text: "message",
     });
   }
+  return Promise.resolve();
 }
 
 
