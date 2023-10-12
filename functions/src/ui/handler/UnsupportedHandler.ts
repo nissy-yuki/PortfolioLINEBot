@@ -10,14 +10,12 @@ import {ReplyHandler} from "./ReplyHandler";
  */
 export class UnsupportedHandler implements ReplyHandler {
   data: string;
-  userId: string;
   /**
    * @constructor
    * @param {string} data - ユーザーから送られてきたデータ
    */
   constructor(data = "そのメッセージ") {
     this.data = data;
-    this.userId = "";
   }
   /**
    * 無のメッセージを返す
