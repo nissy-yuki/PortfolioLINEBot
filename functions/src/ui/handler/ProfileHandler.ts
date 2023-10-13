@@ -9,17 +9,6 @@ import {ReplyHandler} from "./ReplyHandler";
  * @property {string} userId - ユーザーID
  */
 export class ProfileHandler implements ReplyHandler {
-  data: string;
-  userId: string;
-  /**
-   * @constructor
-   * @param {string} data - ユーザーから送られてきたデータ
-   * @param {string} userId - ユーザーID
-   */
-  constructor(data: string, userId: string) {
-    this.data = data;
-    this.userId = userId;
-  }
   /**
    * プロフィールを表示する
    * @return {Promise<Message | Message[]>}

@@ -2,6 +2,7 @@ import {UnsupportedHandler} from "./UnsupportedHandler";
 import {ReplyHandlerFactory} from "./ReplyHandlerFactory";
 import {ReplyHandler} from "./ReplyHandler";
 import {ProfileHandler} from "./ProfileHandler";
+import {ArticleHandler} from "./ArticleHandler";
 
 /**
  * Handlerの生成を行う
@@ -27,7 +28,8 @@ export class MessageHandlerFactory implements ReplyHandlerFactory {
    * @return {ReplyHandler}
    */
   create(): ReplyHandler {
-    if (this.data === "profile") return new ProfileHandler(this.data, this.userId);
+    if (this.data === "profile") return new ProfileHandler();
+    if (this.data === "article") return new ArticleHandler();
     return new UnsupportedHandler(this.data);
   }
 }
