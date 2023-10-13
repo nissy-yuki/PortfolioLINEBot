@@ -19,11 +19,18 @@ export function createArticleMessage(articles: Article[]): Message {
       text: "記事が見つかりませんでした",
     };
   }
-  return {
+  let message: Message = {
     type: "flex",
     altText: "記事一覧",
     contents: createArticleCarousel(articles),
   };
+  if (JSON.stringify(message).length > 500000) {
+    message = {
+      type: "text",
+      text: "記事が多すぎて表示できません",
+    };
+  }
+  return message;
 }
 
 /**
@@ -47,7 +54,9 @@ function createArticleBubble(article: Article): FlexBubble {
   const bubbleContents: FlexComponent[] = [];
   bubbleContents.push(categoryText("記事"));
   bubbleContents.push(titleText(article.title));
-  bubbleContents.push(tagsComponent(article.tags));
+  if (article.tags.length !== 0) {
+    bubbleContents.push(tagsComponent(article.tags));
+  }
   bubbleContents.push(primaryText(article.body, 4, true));
   const createdAt = article.createdAt.toISOString().split("T")[0];
   bubbleContents.push(oneLineSubComponent("公開日", createdAt));

@@ -28,8 +28,8 @@ export class MessageHandlerFactory implements ReplyHandlerFactory {
    * @return {ReplyHandler}
    */
   create(): ReplyHandler {
-    if (this.data === "profile") return new ProfileHandler();
-    if (this.data === "article") return new ArticleHandler();
+    if (this.data === "プロフィール") return new ProfileHandler();
+    if (this.data === "記事") return new ArticleHandler();
     return new UnsupportedHandler(this.data);
   }
 }
