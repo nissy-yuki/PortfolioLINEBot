@@ -19,7 +19,7 @@ export class GetArticleCarouselUseCase {
    * @return {Promise<Article[]>}
    */
   async getArticle(): Promise<Message> {
-    const articles = await this.repository.findAll();
+    const articles = await this.repository.get();
     return createArticleMessage(articles);
   }
 }

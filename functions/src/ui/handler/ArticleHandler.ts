@@ -1,7 +1,7 @@
 import {Message} from "@line/bot-sdk";
 import {ReplyHandler} from "./ReplyHandler";
 import {GetArticleCarouselUseCase} from "../../application/GetArticleCarouselUseCase";
-import {ArticleRepositoryImpl} from "../../infra/ArticleRepositoryImpl";
+import {QiitaArticleRepositoryImpl} from "../../infra/ArticleRepositoryImpl";
 
 /**
  * 記事を表示する
@@ -15,7 +15,7 @@ export class ArticleHandler implements ReplyHandler {
    * @return {Promise<Message>}
    */
   async getMessage(): Promise<Message> {
-    const usecase = new GetArticleCarouselUseCase(new ArticleRepositoryImpl());
+    const usecase = new GetArticleCarouselUseCase(new QiitaArticleRepositoryImpl());
     return await usecase.getArticle();
   }
 }
