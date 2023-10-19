@@ -6,7 +6,7 @@ import {QiitaServiceImpl} from "./qiita/QiitaServiceImpl";
 /**
  * 記事リポジトリの実装
  */
-export class QiitaArticleRepositoryImpl implements ArticleRepository {
+export class ArticleRepositoryImpl implements ArticleRepository {
   service: QiitaService;
   /**
    * @constructor

@@ -1,5 +1,5 @@
 import {MyProfile} from "../../domain/Profile";
-import {MyProfileService} from "./ProfileService";
+import {MyProfileService} from "./MyProfileService";
 
 /**
  * プロフィールサービスの実装

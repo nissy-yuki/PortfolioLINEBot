@@ -1,5 +1,8 @@
 import {Message} from "@line/bot-sdk";
 import {ReplyHandler} from "./ReplyHandler";
+import {container} from "tsyringe";
+import {GetProfileCarouselUseCase} from "../../application/GetProfileCarouselUseCase";
+import {profileModule} from "../../di/ProfileModule";
 
 /**
  * プロフィールを表示する
@@ -14,9 +17,8 @@ export class ProfileHandler implements ReplyHandler {
    * @return {Promise<Message | Message[]>}
    */
   async getMessage(): Promise<Message | Message[]> {
-    return {
-      type: "text",
-      text: "profile",
-    };
+    profileModule();
+    const usecase = container.resolve(GetProfileCarouselUseCase);
+    return await usecase.getProfileCarousel();
   }
 }

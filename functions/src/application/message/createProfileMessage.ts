@@ -1,4 +1,4 @@
-import {FlexBox, FlexBubble, FlexMessage} from "@line/bot-sdk";
+import {FlexBox, FlexBubble, FlexComponent, FlexMessage} from "@line/bot-sdk";
 import {Account, Career, MyProfile, Skill} from "../../domain/Profile";
 import {primaryText} from "./components/primaryText";
 import {accountComponent} from "./components/accountComponent";
@@ -32,8 +32,9 @@ export function createProfileMessage(profile: MyProfile): FlexMessage {
  * @return {FlexBubble}
  */
 function createMainProfileBubble(name: string, imageUrl: string, accounts: Account[], skills: Skill[]): FlexBubble {
-  const accountBox: FlexBox = createAccountsBox(accounts);
-  const skillBox: FlexBox = createSkillsBox(skills);
+  const bodyContents: FlexComponent[] = [primaryText(name)];
+  if (accounts.length > 0) bodyContents.push(createAccountsBox(accounts));
+  if (skills.length > 0) bodyContents.push(createSkillsBox(skills));
   return {
     type: "bubble",
     hero: {
@@ -47,10 +48,7 @@ function createMainProfileBubble(name: string, imageUrl: string, accounts: Accou
       type: "box",
       layout: "vertical",
       spacing: "md",
-      contents: [
-        primaryText(name),
-        accountBox,
-      ],
+      contents: bodyContents,
     },
   };
 }

@@ -1,6 +1,6 @@
 import {MyProfileRepository} from "../domain/MyProfileRepository";
 import {MyProfile} from "../domain/Profile";
-import {MyProfileService} from "./profile/ProfileService";
+import {MyProfileService} from "./profile/MyProfileService";
 
 /**
  * プロフィールリポジトリの実装
