@@ -2,8 +2,8 @@ import * as functions from "firebase-functions";
 import * as express from "express";
 import * as line from "@line/bot-sdk";
 import {isMessageEvent, isReplyableEvent, isTextMessage} from "./typeCheck";
-import {MessageHandlerFactory} from "./handler/MessageHandlerFactory";
-import {UnsupportedHandlerFactory} from "./handler/UnsupportedHandlerFactory";
+import MessageHandlerFactory from "./handler/MessageHandlerFactory";
+import UnsupportedHandlerFactory from "./handler/UnsupportedHandlerFactory";
 
 const config = {
   channelSecret: functions.config().line.channel_secret || "",

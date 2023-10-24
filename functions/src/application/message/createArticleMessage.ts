@@ -12,7 +12,7 @@ import {primaryText} from "./components/primaryText";
  * @param {Article[]} articles - 記事データ
  * @return {Message}
  */
-export function createArticleMessage(articles: Article[]): Message {
+export default function createArticleMessage(articles: Article[]): Message {
   if (articles.length === 0) {
     return {
       type: "text",

@@ -1,7 +1,9 @@
 import * as functions from "firebase-functions";
 import {Article} from "../../domain/Article";
 import {QiitaService} from "./QiitaService";
+import {injectable} from "tsyringe";
 
+@injectable()
 /**
  * Qiita APIの実装
  */

@@ -8,7 +8,7 @@ import {ReplyHandler} from "./ReplyHandler";
  * @property {string} data - ユーザーから送られてきたデータ
  * @property {string} userId - ユーザーID
  */
-export class UnsupportedHandler implements ReplyHandler {
+export default class UnsupportedHandler implements ReplyHandler {
   data: string;
   /**
    * @constructor
