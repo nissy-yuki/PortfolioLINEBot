@@ -1,6 +1,8 @@
-import {MyProfile} from "../../domain/Profile";
+import {injectable} from "tsyringe";
+import {MyProfile} from "../../domain/MyProfile";
 import {MyProfileService} from "./MyProfileService";
 
+@injectable()
 /**
  * プロフィールサービスの実装
  * @implements {MyProfileService}

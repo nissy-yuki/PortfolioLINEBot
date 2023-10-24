@@ -1,5 +1,5 @@
 import {FlexBox} from "@line/bot-sdk";
-import {Account} from "../../../domain/Profile";
+import {Account} from "../../../domain/MyProfile";
 import {urlText} from "./urlText";
 
 /**

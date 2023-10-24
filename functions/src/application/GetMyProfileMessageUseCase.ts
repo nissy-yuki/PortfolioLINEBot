@@ -1,13 +1,13 @@
-import {FlexMessage} from "@line/bot-sdk";
-import {MyProfileRepository} from "../domain/MyProfileRepository";
-import {createProfileMessage} from "./message/createProfileMessage";
 import {inject, injectable} from "tsyringe";
+import {MyProfileRepository} from "../domain/MyProfileRepository";
+import {Message} from "@line/bot-sdk";
+import {createProfileMessage} from "./message/createProfileMessage";
 
 @injectable()
 /**
- * 自己紹介のカルーセルを取得するユースケース
+ * プロフィールメッセージ取得ユースケース
  */
-export class GetProfileCarouselUseCase {
+export default class GetMyProfileMessageUseCase {
   /**
    * @constructor
    */
@@ -16,10 +16,10 @@ export class GetProfileCarouselUseCase {
     private readonly repository: MyProfileRepository
   ) {}
   /**
-   * 自己紹介のカルーセルを取得する
-   * @return {Promise<FlexMessage>}
+   * プロフィールメッセージを取得する
+   * @return {Promise<Message>} - プロフィールメッセージ
    */
-  async getProfileCarousel(): Promise<FlexMessage> {
+  async getMyProfileMessage(): Promise<Message> {
     const profile = await this.repository.get();
     return createProfileMessage(profile);
   }

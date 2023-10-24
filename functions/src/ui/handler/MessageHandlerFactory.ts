@@ -1,8 +1,8 @@
 import {UnsupportedHandler} from "./UnsupportedHandler";
 import {ReplyHandlerFactory} from "./ReplyHandlerFactory";
 import {ReplyHandler} from "./ReplyHandler";
-import {ProfileHandler} from "./ProfileHandler";
 import {ArticleHandler} from "./ArticleHandler";
+import MyProfileHandler from "./MyProfileHandler";
 
 /**
  * Handlerの生成を行う
@@ -28,7 +28,7 @@ export class MessageHandlerFactory implements ReplyHandlerFactory {
    * @return {ReplyHandler}
    */
   create(): ReplyHandler {
-    if (this.data === "プロフィール") return new ProfileHandler();
+    if (this.data === "プロフィール") return new MyProfileHandler();
     if (this.data === "記事") return new ArticleHandler();
     return new UnsupportedHandler(this.data);
   }

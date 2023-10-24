@@ -1,19 +1,21 @@
+import {inject, injectable} from "tsyringe";
 import {MyProfileRepository} from "../domain/MyProfileRepository";
-import {MyProfile} from "../domain/Profile";
 import {MyProfileService} from "./profile/MyProfileService";
+import {MyProfile} from "../domain/MyProfile";
 
+@injectable()
 /**
  * プロフィールリポジトリの実装
+ * @implements {MyProfileRepository}
  */
-export class MyProfileRepositoryImpl implements MyProfileRepository {
-  service: MyProfileService;
+export default class MyProfileRepositoryImpl implements MyProfileRepository {
   /**
    * @constructor
-   * @param {MyProfileService} service - プロフィールサービス
    */
-  constructor(service: MyProfileService) {
-    this.service = service;
-  }
+  constructor(
+    @inject("MyProfileService")
+    private readonly service : MyProfileService
+  ) {}
   /**
    * プロフィールを取得する
    * @return {Promise<MyProfile>}

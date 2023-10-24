@@ -1,5 +1,5 @@
 import {FlexBox, FlexBubble, FlexComponent, FlexMessage} from "@line/bot-sdk";
-import {Account, Career, MyProfile, Skill} from "../../domain/Profile";
+import {Account, Career, MyProfile, Skill} from "../../domain/MyProfile";
 import {primaryText} from "./components/primaryText";
 import {accountComponent} from "./components/accountComponent";
 import {pairText} from "./components/pairText";
@@ -35,22 +35,23 @@ function createMainProfileBubble(name: string, imageUrl: string, accounts: Accou
   const bodyContents: FlexComponent[] = [primaryText(name)];
   if (accounts.length > 0) bodyContents.push(createAccountsBox(accounts));
   if (skills.length > 0) bodyContents.push(createSkillsBox(skills));
-  return {
+  const bubble: FlexBubble = {
     type: "bubble",
-    hero: {
-      type: "image",
-      url: imageUrl,
-      size: "full",
-      aspectRatio: "20:13",
-      aspectMode: "cover",
-    },
-    body: {
-      type: "box",
-      layout: "vertical",
-      spacing: "md",
-      contents: bodyContents,
-    },
   };
+  // bubble.hero = {
+  //   type: "image",
+  //   url: imageUrl,
+  //   size: "full",
+  //   aspectRatio: "20:13",
+  //   aspectMode: "cover",
+  // };
+  bubble.body = {
+    type: "box",
+    layout: "vertical",
+    spacing: "md",
+    contents: bodyContents,
+  };
+  return bubble;
 }
 
 /**

@@ -1,20 +1,21 @@
+import {inject, injectable} from "tsyringe";
 import {Article} from "../domain/Article";
 import {ArticleRepository} from "../domain/ArticleRepository";
 import {QiitaService} from "./qiita/QiitaService";
-import {QiitaServiceImpl} from "./qiita/QiitaServiceImpl";
 
+@injectable()
 /**
  * 記事リポジトリの実装
  */
 export class ArticleRepositoryImpl implements ArticleRepository {
-  service: QiitaService;
   /**
    * @constructor
    * @param {QiitaService} service - Qiitaサービス
    */
-  constructor(service: QiitaService = new QiitaServiceImpl()) {
-    this.service = service;
-  }
+  constructor(
+    @inject("QiitaService")
+    private readonly service: QiitaService
+  ) { }
   /**
    * 記事を全件取得する
    * @return {Promise<Article[]>}

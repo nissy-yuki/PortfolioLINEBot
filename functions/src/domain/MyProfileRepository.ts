@@ -1,4 +1,4 @@
-import {MyProfile} from "./Profile";
+import {MyProfile} from "./MyProfile";
 
 export interface MyProfileRepository {
   get(): Promise<MyProfile>;
