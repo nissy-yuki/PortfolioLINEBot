@@ -1,7 +1,7 @@
 import {FlexBox, FlexBubble, FlexComponent, FlexMessage} from "@line/bot-sdk";
 import {Account, Career, MyProfile, Skill} from "../../domain/MyProfile";
 import {primaryText} from "./components/primaryText";
-import {accountComponent} from "./components/accountComponent";
+import accountComponent from "./components/accountComponent";
 import {pairText} from "./components/pairText";
 
 /**
@@ -9,7 +9,7 @@ import {pairText} from "./components/pairText";
  * @param {MyProfile} profile - プロフィール
  * @return {FlexMessage} - プロフィールメッセージ
  */
-export function createProfileMessage(profile: MyProfile): FlexMessage {
+export default function createProfileMessage(profile: MyProfile): FlexMessage {
   const bubbles: FlexBubble[] = [];
   bubbles.push(createMainProfileBubble(profile.name, profile.imageUrl, profile.accounts, profile.skills));
   bubbles.push(createCareerProfileBubble(profile.careers));

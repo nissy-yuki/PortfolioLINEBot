@@ -1,7 +1,7 @@
 import {inject, injectable} from "tsyringe";
 import {MyProfileRepository} from "../domain/MyProfileRepository";
 import {Message} from "@line/bot-sdk";
-import {createProfileMessage} from "./message/createProfileMessage";
+import createProfileMessage from "./message/createProfileMessage";
 
 @injectable()
 /**

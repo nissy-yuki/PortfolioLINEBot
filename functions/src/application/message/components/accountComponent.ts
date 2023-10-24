@@ -7,7 +7,7 @@ import {urlText} from "./urlText";
  * @param {Account} account - アカウント情報
  * @return {FlexBox}
  */
-export function accountComponent(account: Account): FlexBox {
+export default function accountComponent(account: Account): FlexBox {
   return {
     type: "box",
     layout: "baseline",

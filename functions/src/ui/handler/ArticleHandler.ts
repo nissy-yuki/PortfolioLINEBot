@@ -1,6 +1,6 @@
 import {Message} from "@line/bot-sdk";
 import {ReplyHandler} from "./ReplyHandler";
-import {GetArticleCarouselUseCase} from "../../application/GetArticleCarouselUseCase";
+import GetArticleMessageUseCase from "../../application/GetArticleCarouselUseCase";
 import {container} from "tsyringe";
 import articleModule from "../../di/ArticleModule";
 
@@ -9,7 +9,7 @@ import articleModule from "../../di/ArticleModule";
  * @implements {ReplyHandler}
  * @class
  */
-export class ArticleHandler implements ReplyHandler {
+export default class ArticleHandler implements ReplyHandler {
   /**
    * @constructor
    */
@@ -21,7 +21,7 @@ export class ArticleHandler implements ReplyHandler {
    * @return {Promise<Message>}
    */
   async getMessage(): Promise<Message> {
-    const usecase = container.resolve(GetArticleCarouselUseCase);
+    const usecase = container.resolve(GetArticleMessageUseCase);
     return await usecase.getArticle();
   }
 }

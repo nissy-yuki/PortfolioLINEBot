@@ -1,7 +1,7 @@
-import {UnsupportedHandler} from "./UnsupportedHandler";
+import UnsupportedHandler from "./UnsupportedHandler";
 import {ReplyHandlerFactory} from "./ReplyHandlerFactory";
 import {ReplyHandler} from "./ReplyHandler";
-import {ArticleHandler} from "./ArticleHandler";
+import ArticleHandler from "./ArticleHandler";
 import MyProfileHandler from "./MyProfileHandler";
 
 /**
@@ -11,7 +11,7 @@ import MyProfileHandler from "./MyProfileHandler";
  * @property {string} data - ユーザーから送られてきたデータ
  * @property {string} userId - ユーザーID
  */
-export class MessageHandlerFactory implements ReplyHandlerFactory {
+export default class MessageHandlerFactory implements ReplyHandlerFactory {
   data: string;
   userId: string;
   /**

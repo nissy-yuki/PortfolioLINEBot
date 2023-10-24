@@ -1,4 +1,4 @@
-import {UnsupportedHandler} from "./UnsupportedHandler";
+import UnsupportedHandler from "./UnsupportedHandler";
 import {ReplyHandler} from "./ReplyHandler";
 import {ReplyHandlerFactory} from "./ReplyHandlerFactory";
 
@@ -7,7 +7,7 @@ import {ReplyHandlerFactory} from "./ReplyHandlerFactory";
  * @implements {ReplyHandlerFactory}
  * @class
  */
-export class UnsupportedHandlerFactory implements ReplyHandlerFactory {
+export default class UnsupportedHandlerFactory implements ReplyHandlerFactory {
   /**
    * Handlerの生成
    * @return {ReplyHandler}
