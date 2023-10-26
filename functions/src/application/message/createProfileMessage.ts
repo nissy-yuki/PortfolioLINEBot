@@ -1,5 +1,5 @@
 import {FlexBox, FlexBubble, FlexComponent, FlexMessage} from "@line/bot-sdk";
-import {Account, Career, MyProfile, Skill} from "../../domain/MyProfile";
+import {Account, Career, MyProfile, Skill} from "../../domain/dataModel/MyProfile";
 import {primaryText} from "./components/primaryText";
 import accountComponent from "./components/accountComponent";
 import {pairText} from "./components/pairText";

@@ -1,5 +1,5 @@
 import {FlexBubble, FlexCarousel, FlexComponent, Message} from "@line/bot-sdk";
-import {Article} from "../../domain/Article";
+import {Article} from "../../domain/dataModel/Article";
 import {categoryText} from "./components/categoryText";
 import {titleText} from "./components/titleText";
 import {tagsComponent} from "./components/tagsComponent";

@@ -1,7 +1,7 @@
 import {inject, injectable} from "tsyringe";
-import {MyProfileRepository} from "../../domain/MyProfileRepository";
+import {MyProfileRepository} from "../../domain/repository/MyProfileRepository";
 import {MyProfileService} from "../service/profile/MyProfileService";
-import {MyProfile} from "../../domain/MyProfile";
+import {MyProfile} from "../../domain/dataModel/MyProfile";
 
 @injectable()
 /**

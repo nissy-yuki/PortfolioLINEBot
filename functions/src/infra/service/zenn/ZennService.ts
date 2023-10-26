@@ -1,4 +1,4 @@
-import {Article} from "../../../domain/Article";
+import {Article} from "../../../domain/dataModel/Article";
 
 export interface ZennService {
   getArticles(): Promise<Article[]>;

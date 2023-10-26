@@ -1,6 +1,6 @@
 import {inject, injectable} from "tsyringe";
-import {Article} from "../../domain/Article";
-import {ArticleRepository} from "../../domain/ArticleRepository";
+import {Article} from "../../domain/dataModel/Article";
+import {ArticleRepository} from "../../domain/repository/ArticleRepository";
 import {QiitaService} from "../service/qiita/QiitaService";
 
 @injectable()

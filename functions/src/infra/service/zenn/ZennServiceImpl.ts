@@ -1,5 +1,5 @@
 import * as functions from "firebase-functions";
-import {Article} from "../../../domain/Article";
+import {Article} from "../../../domain/dataModel/Article";
 import {ZennService} from "./ZennService";
 /**
  * Zenn APIの実装

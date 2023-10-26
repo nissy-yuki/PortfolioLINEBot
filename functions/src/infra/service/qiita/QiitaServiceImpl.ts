@@ -1,5 +1,5 @@
 import * as functions from "firebase-functions";
-import {Article} from "../../../domain/Article";
+import {Article} from "../../../domain/dataModel/Article";
 import {QiitaService} from "./QiitaService";
 import {injectable} from "tsyringe";
 
