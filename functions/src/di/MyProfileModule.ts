@@ -1,6 +1,6 @@
 import {DependencyContainer} from "tsyringe";
-import MyProfileRepositoryImpl from "../infra/MyProfileRepositoryImpl";
-import {MyProfileServiceImpl} from "../infra/profile/MyProfileServiceImple";
+import MyProfileRepositoryImpl from "../infra/repository/MyProfileRepositoryImpl";
+import {MyProfileServiceImpl} from "../infra/service/profile/MyProfileServiceImple";
 
 /**
  * プロフィール周りのDI

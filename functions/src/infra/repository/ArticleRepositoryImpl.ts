@@ -1,7 +1,7 @@
 import {inject, injectable} from "tsyringe";
-import {Article} from "../domain/Article";
-import {ArticleRepository} from "../domain/ArticleRepository";
-import {QiitaService} from "./qiita/QiitaService";
+import {Article} from "../../domain/Article";
+import {ArticleRepository} from "../../domain/ArticleRepository";
+import {QiitaService} from "../service/qiita/QiitaService";
 
 @injectable()
 /**

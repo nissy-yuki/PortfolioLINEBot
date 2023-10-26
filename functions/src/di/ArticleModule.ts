@@ -1,6 +1,6 @@
 import {DependencyContainer} from "tsyringe";
-import {ArticleRepositoryImpl} from "../infra/ArticleRepositoryImpl";
-import {QiitaServiceImpl} from "../infra/qiita/QiitaServiceImpl";
+import {ArticleRepositoryImpl} from "../infra/repository/ArticleRepositoryImpl";
+import {QiitaServiceImpl} from "../infra/service/qiita/QiitaServiceImpl";
 
 /**
  * 記事関連のDI
