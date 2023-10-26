@@ -11,6 +11,7 @@ export type MyProfile = {
 export type Account = {
   name: string;
   url: string;
+  serviceName: string;
   iconUrl: string;
 }
 

@@ -14,10 +14,15 @@ export default function accountComponent(account: Account): FlexBox {
     contents: [
       {
         type: "icon",
-        url: account.iconUrl,
-        size: "sm",
+        url: account.iconUrl+".png",
+        size: "md",
       },
       urlText(account.name, account.url, "md", "md"),
     ],
+    action: {
+      type: "uri",
+      label: "action",
+      uri: account.url,
+    },
   };
 }
