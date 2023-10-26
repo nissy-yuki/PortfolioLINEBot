@@ -1,5 +1,5 @@
 import {inject, injectable} from "tsyringe";
-import {MyProfileRepository} from "../domain/MyProfileRepository";
+import {MyProfileRepository} from "../domain/repository/MyProfileRepository";
 import {Message} from "@line/bot-sdk";
 import createProfileMessage from "./message/createProfileMessage";
 

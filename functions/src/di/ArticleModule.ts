@@ -1,6 +1,7 @@
 import {DependencyContainer} from "tsyringe";
-import {ArticleRepositoryImpl} from "../infra/ArticleRepositoryImpl";
-import {QiitaServiceImpl} from "../infra/qiita/QiitaServiceImpl";
+import {ArticleRepositoryImpl} from "../infra/repository/ArticleRepositoryImpl";
+import {QiitaServiceImpl} from "../infra/service/qiita/QiitaServiceImpl";
+import ZennServiceImpl from "../infra/service/zenn/ZennServiceImpl";
 
 /**
  * 記事関連のDI
@@ -12,6 +13,9 @@ export default function articleModule(container: DependencyContainer) {
   });
   container.register("QiitaService", {
     useClass: QiitaServiceImpl,
+  });
+  container.register("ZennService", {
+    useClass: ZennServiceImpl,
   });
 }
 

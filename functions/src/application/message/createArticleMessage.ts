@@ -1,5 +1,5 @@
-import {FlexBubble, FlexCarousel, FlexComponent, Message} from "@line/bot-sdk";
-import {Article} from "../../domain/Article";
+import {FlexBox, FlexBubble, FlexCarousel, FlexComponent, Message} from "@line/bot-sdk";
+import {Article} from "../../domain/dataModel/Article";
 import {categoryText} from "./components/categoryText";
 import {titleText} from "./components/titleText";
 import {tagsComponent} from "./components/tagsComponent";
@@ -41,7 +41,7 @@ export default function createArticleMessage(articles: Article[]): Message {
 function createArticleCarousel(articles: Article[]): FlexCarousel {
   return {
     type: "carousel",
-    contents: articles.map(createArticleBubble),
+    contents: articles.slice(0, 10).map(createArticleBubble),
   };
 }
 
@@ -52,16 +52,14 @@ function createArticleCarousel(articles: Article[]): FlexCarousel {
  */
 function createArticleBubble(article: Article): FlexBubble {
   const bubbleContents: FlexComponent[] = [];
-  bubbleContents.push(categoryText("記事"));
+  bubbleContents.push(createArticleBubbleTop("記事", article.platform));
   bubbleContents.push(titleText(article.title));
-  if (article.tags.length !== 0) {
-    bubbleContents.push(tagsComponent(article.tags));
-  }
-  bubbleContents.push(primaryText(article.body, 4, true));
+  if (article.tags.length !== 0) bubbleContents.push(tagsComponent(article.tags));
+  if (article.body !== "") bubbleContents.push(primaryText(article.body, 4, true));
   const createdAt = article.createdAt.toISOString().split("T")[0];
   bubbleContents.push(oneLineSubComponent("公開日", createdAt));
   const updatedAt = article.updatedAt.toISOString().split("T")[0];
-  if (createdAt !== updatedAt) {
+  if (createdAt < updatedAt) {
     bubbleContents.push(oneLineSubComponent("更新日", updatedAt));
   }
   return {
@@ -79,5 +77,36 @@ function createArticleBubble(article: Article): FlexBubble {
         uriButton("記事を読む", article.url),
       ],
     },
+  };
+}
+
+/**
+ * 記事のバブルのトップを作成する
+ * @param {string} category - カテゴリ
+ * @param {"Qiita" | "Zenn"} articlePlatForm - 記事のプラットフォーム
+ * @return {FlexBox}
+ */
+function createArticleBubbleTop(category: string, articlePlatForm: "Qiita" | "Zenn"): FlexBox {
+  const uri = articlePlatForm === "Qiita" ? "https://qiita.com/nissy243" : "https://zenn.dev/nisisippi";
+  return {
+    type: "box",
+    layout: "baseline",
+    contents: [
+      categoryText(category),
+      {
+        type: "text",
+        text: articlePlatForm,
+        size: "xs",
+        color: "#aaaaaa",
+        align: "end",
+        gravity: "bottom",
+        action: {
+          type: "uri",
+          label: "action",
+          uri: uri,
+        },
+      },
+    ],
+    spacing: "md",
   };
 }

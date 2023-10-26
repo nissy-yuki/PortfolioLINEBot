@@ -1,5 +1,5 @@
 import {Message} from "@line/bot-sdk";
-import {ArticleRepository} from "../domain/ArticleRepository";
+import {ArticleRepository} from "../domain/repository/ArticleRepository";
 import createArticleMessage from "./message/createArticleMessage";
 import {inject, injectable} from "tsyringe";
 

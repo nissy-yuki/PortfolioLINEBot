@@ -1,5 +1,5 @@
 import * as functions from "firebase-functions";
-import {Article} from "../../domain/Article";
+import {Article} from "../../../domain/dataModel/Article";
 import {QiitaService} from "./QiitaService";
 import {injectable} from "tsyringe";
 
@@ -31,6 +31,7 @@ export class QiitaServiceImpl implements QiitaService {
     const data = await res.json();
     return data.map((item: QiitaItemResponse): Article => ({
       id: item.id,
+      platform: "Qiita",
       title: item.title,
       url: item.url,
       tags: item.tags.map((tag: QiitaResponseTag) => tag.name),
