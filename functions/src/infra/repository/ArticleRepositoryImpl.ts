@@ -26,7 +26,11 @@ export class ArticleRepositoryImpl implements ArticleRepository {
   async get(): Promise<Article[]> {
     const qiitaArticles = await this.qiitaService.getArticles();
     const zennArticles = await this.zennService.getArticles();
-    const articles = qiitaArticles.concat(zennArticles);
+    const articles = qiitaArticles.concat(zennArticles).sort((a, b) => {
+      if (a.createdAt < b.createdAt) return 1;
+      if (a.createdAt > b.createdAt) return -1;
+      return 0;
+    });
     return articles;
   }
 }

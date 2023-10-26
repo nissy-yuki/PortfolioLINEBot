@@ -1,12 +1,10 @@
-import * as functions from "firebase-functions";
 import {Article} from "../../../domain/dataModel/Article";
 import {ZennService} from "./ZennService";
 /**
  * Zenn APIの実装
  */
 export default class ZennServiceImpl implements ZennService {
-  userName = functions.config().zenn.username;
-  baseUrl = "https://zenn.dev/api/articles?username="+this.userName+"&order=latest";
+  baseUrl = "https://zenn.dev/api/articles?username=nisisippi&order=latest";
   /**
    * 記事を全件取得する
    * @return {Promise<Article[]>}
@@ -23,7 +21,7 @@ export default class ZennServiceImpl implements ZennService {
       id: item.id.toString(),
       platform: "Zenn",
       title: item.title,
-      url: "https://zenn.dev/"+this.userName+"/articles/"+item.slug,
+      url: "https://zenn.dev/nisisippi/articles/"+item.slug,
       tags: [],
       body: "",
       createdAt: new Date(item.published_at),
