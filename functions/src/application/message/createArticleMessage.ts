@@ -6,6 +6,7 @@ import {tagsComponent} from "./components/tagsComponent";
 import {oneLineSubComponent} from "./components/oneLineSubComponent";
 import {uriButton} from "./components/uriButton";
 import {primaryText} from "./components/primaryText";
+import {qiitaUrl, zennUrl} from "../../resource/social";
 
 /**
  * 記事のメッセージを作成する
@@ -87,7 +88,7 @@ function createArticleBubble(article: Article): FlexBubble {
  * @return {FlexBox}
  */
 function createArticleBubbleTop(category: string, articlePlatForm: "Qiita" | "Zenn"): FlexBox {
-  const uri = articlePlatForm === "Qiita" ? "https://qiita.com/nissy243" : "https://zenn.dev/nisisippi";
+  const uri = articlePlatForm === "Qiita" ? qiitaUrl : zennUrl;
   return {
     type: "box",
     layout: "baseline",
