@@ -17,7 +17,7 @@ export default class ZennServiceImpl implements ZennService {
       },
     });
     const data = await res.json();
-    return data.map((item: ZennArticle): Article => ({
+    return data.articles.map((item: ZennArticle): Article => ({
       id: item.id.toString(),
       platform: "Zenn",
       title: item.title,

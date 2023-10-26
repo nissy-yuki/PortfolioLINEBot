@@ -55,11 +55,11 @@ function createArticleBubble(article: Article): FlexBubble {
   bubbleContents.push(createArticleBubbleTop("記事", article.platform));
   bubbleContents.push(titleText(article.title));
   if (article.tags.length !== 0) bubbleContents.push(tagsComponent(article.tags));
-  bubbleContents.push(primaryText(article.body, 4, true));
+  if (article.body !== "") bubbleContents.push(primaryText(article.body, 4, true));
   const createdAt = article.createdAt.toISOString().split("T")[0];
   bubbleContents.push(oneLineSubComponent("公開日", createdAt));
   const updatedAt = article.updatedAt.toISOString().split("T")[0];
-  if (createdAt !== updatedAt) {
+  if (createdAt < updatedAt) {
     bubbleContents.push(oneLineSubComponent("更新日", updatedAt));
   }
   return {
