@@ -24,7 +24,7 @@ export class MyProfileServiceImpl implements MyProfileService {
           name: "@nissy2438",
           url: twitterUrl,
           serviceName: "X",
-          iconUrl: "https://gyazo.com/26446d078a0546e3b967fddf5a630624.png",
+          iconUrl: "https://gyazo.com/26446d078a0546e3b967fddf5a630624",
         },
         {
           name: "nisi-yuki",
