@@ -7,7 +7,7 @@ import {inject, injectable} from "tsyringe";
 /**
  * 記事を取得するユースケース
  */
-export default class GetArticleMessageUseCase {
+export default class FetchArticleMessageUseCase {
   /**
    * @constructor
    */
@@ -19,7 +19,7 @@ export default class GetArticleMessageUseCase {
    * 記事を取得する
    * @return {Promise<Article[]>}
    */
-  async getArticle(): Promise<Message> {
+  async excute(): Promise<Message> {
     const articles = await this.repository.get();
     return createArticleMessage(articles);
   }
