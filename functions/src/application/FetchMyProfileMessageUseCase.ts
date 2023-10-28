@@ -7,7 +7,7 @@ import createProfileMessage from "./message/createProfileMessage";
 /**
  * プロフィールメッセージ取得ユースケース
  */
-export default class GetMyProfileMessageUseCase {
+export default class FetchMyProfileMessageUseCase {
   /**
    * @constructor
    */
@@ -19,7 +19,7 @@ export default class GetMyProfileMessageUseCase {
    * プロフィールメッセージを取得する
    * @return {Promise<Message>} - プロフィールメッセージ
    */
-  async getMyProfileMessage(): Promise<Message> {
+  async excute(): Promise<Message> {
     const profile = await this.repository.get();
     return createProfileMessage(profile);
   }

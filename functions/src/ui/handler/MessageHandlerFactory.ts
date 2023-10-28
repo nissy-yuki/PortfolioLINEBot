@@ -3,6 +3,7 @@ import {ReplyHandlerFactory} from "./ReplyHandlerFactory";
 import {ReplyHandler} from "./ReplyHandler";
 import ArticleHandler from "./ArticleHandler";
 import MyProfileHandler from "./MyProfileHandler";
+import TriviaHandler from "./TriviaHandler";
 
 /**
  * Handlerの生成を行う
@@ -30,6 +31,7 @@ export default class MessageHandlerFactory implements ReplyHandlerFactory {
   create(): ReplyHandler {
     if (this.data === "プロフィール") return new MyProfileHandler();
     if (this.data === "記事") return new ArticleHandler();
+    if (this.data === "雑学") return new TriviaHandler();
     return new UnsupportedHandler(this.data);
   }
 }

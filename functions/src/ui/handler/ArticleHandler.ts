@@ -1,6 +1,6 @@
 import {Message} from "@line/bot-sdk";
 import {ReplyHandler} from "./ReplyHandler";
-import GetArticleMessageUseCase from "../../application/GetArticleCarouselUseCase";
+import FetchArticleMessageUseCase from "../../application/FetchArticleCarouselUseCase";
 import {container} from "tsyringe";
 import articleModule from "../../di/ArticleModule";
 
@@ -21,7 +21,7 @@ export default class ArticleHandler implements ReplyHandler {
    * @return {Promise<Message>}
    */
   async getMessage(): Promise<Message> {
-    const usecase = container.resolve(GetArticleMessageUseCase);
-    return await usecase.getArticle();
+    const usecase = container.resolve(FetchArticleMessageUseCase);
+    return await usecase.excute();
   }
 }
