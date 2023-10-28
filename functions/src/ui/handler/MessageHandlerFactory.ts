@@ -4,6 +4,7 @@ import {ReplyHandler} from "./ReplyHandler";
 import ArticleHandler from "./ArticleHandler";
 import MyProfileHandler from "./MyProfileHandler";
 import TriviaHandler from "./TriviaHandler";
+import {richmenuMessage} from "../../resource/message";
 
 /**
  * Handlerの生成を行う
@@ -29,9 +30,11 @@ export default class MessageHandlerFactory implements ReplyHandlerFactory {
    * @return {ReplyHandler}
    */
   create(): ReplyHandler {
-    if (this.data === "プロフィール") return new MyProfileHandler();
-    if (this.data === "記事") return new ArticleHandler();
-    if (this.data === "雑学") return new TriviaHandler();
+    if (this.data === richmenuMessage.profile) return new MyProfileHandler();
+    if (this.data === richmenuMessage.repository) return new UnsupportedHandler(this.data);
+    if (this.data === richmenuMessage.article) return new ArticleHandler();
+    if (this.data === richmenuMessage.contact) return new UnsupportedHandler(this.data);
+    if (this.data === richmenuMessage.trivia) return new TriviaHandler();
     return new UnsupportedHandler(this.data);
   }
 }
