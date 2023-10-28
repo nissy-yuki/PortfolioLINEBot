@@ -2,8 +2,8 @@ import * as functions from "firebase-functions";
 import * as express from "express";
 import * as line from "@line/bot-sdk";
 import {isMessageEvent, isReplyableEvent, isTextMessage} from "./typeCheck";
-import MessageHandlerFactory from "./handler/MessageHandlerFactory";
 import UnsupportedHandlerFactory from "./handler/UnsupportedHandlerFactory";
+import MessageHandlerFactory from "./handler/MessageHandlerFactory";
 
 const config = {
   channelSecret: functions.config().line.channel_secret || "",
@@ -44,7 +44,12 @@ async function handleEvent(event: line.WebhookEvent) {
       factory = new MessageHandlerFactory(message, userId);
     }
     const handler = factory.create();
-    const message = await handler.getMessage();
+    const message = await handler.getMessage().catch((e): line.Message => {
+      return {
+        type: "text",
+        text: e,
+      };
+    });
     return client.replyMessage(event.replyToken, message);
   }
   return Promise.resolve();
