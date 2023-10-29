@@ -1,7 +1,7 @@
-import * as functions from "firebase-functions";
 import {Article} from "../../../domain/dataModel/Article";
 import {QiitaService} from "./QiitaService";
 import {injectable} from "tsyringe";
+import {accessToken} from "../../../env/qiita";
 
 @injectable()
 /**
@@ -14,7 +14,7 @@ export class QiitaServiceImpl implements QiitaService {
    * @constructor
    */
   constructor() {
-    this.accessToken = functions.config().qiita.access_token;
+    this.accessToken = accessToken;
   }
   /**
    * 記事を全件取得する
