@@ -47,7 +47,7 @@ async function handleEvent(event: line.WebhookEvent) {
     const message = await handler.getMessage().catch((e): line.Message => {
       return {
         type: "text",
-        text: e,
+        text: e || "error",
       };
     });
     return client.replyMessage(event.replyToken, message);

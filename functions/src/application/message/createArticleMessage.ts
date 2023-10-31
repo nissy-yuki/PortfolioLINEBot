@@ -1,4 +1,4 @@
-import {FlexBox, FlexBubble, FlexCarousel, FlexComponent, Message} from "@line/bot-sdk";
+import {FlexBox, FlexBubble, FlexCarousel, Message} from "@line/bot-sdk";
 import {Article} from "../../domain/dataModel/Article";
 import {categoryText} from "./components/categoryText";
 import {titleText} from "./components/titleText";
@@ -6,7 +6,8 @@ import {tagsComponent} from "./components/tagsComponent";
 import {oneLineSubComponent} from "./components/oneLineSubComponent";
 import {uriButton} from "./components/uriButton";
 import {primaryText} from "./components/primaryText";
-import {qiitaUrl, zennUrl} from "../../resource/social";
+import {socialAccountUrl} from "../../resource/social";
+import {betweenBox} from "./components/betweenBox";
 
 /**
  * 記事のメッセージを作成する
@@ -52,25 +53,34 @@ function createArticleCarousel(articles: Article[]): FlexCarousel {
  * @return {FlexBubble}
  */
 function createArticleBubble(article: Article): FlexBubble {
-  const bubbleContents: FlexComponent[] = [];
-  bubbleContents.push(createArticleBubbleTop("記事", article.platform));
-  bubbleContents.push(titleText(article.title));
-  if (article.tags.length !== 0) bubbleContents.push(tagsComponent(article.tags));
-  if (article.body !== "") bubbleContents.push(primaryText(article.body, 4, true));
+  const topBox: FlexBox = {
+    type: "box",
+    layout: "vertical",
+    contents: [],
+    spacing: "md",
+  };
+  topBox.contents.push(createArticleBubbleTop("記事", article.platform));
+  topBox.contents.push(titleText(article.title));
+  if (article.tags.length !== 0) topBox.contents.push(tagsComponent(article.tags));
+  if (article.body !== "") topBox.contents.push(primaryText(article.body, 4, true));
+  const bottomBox: FlexBox = {
+    type: "box",
+    layout: "vertical",
+    contents: [],
+    spacing: "md",
+  };
   const createdAt = article.createdAt.toISOString().split("T")[0];
-  bubbleContents.push(oneLineSubComponent("公開日", createdAt));
+  bottomBox.contents.push(oneLineSubComponent("公開日", createdAt));
   const updatedAt = article.updatedAt.toISOString().split("T")[0];
   if (createdAt < updatedAt) {
-    bubbleContents.push(oneLineSubComponent("更新日", updatedAt));
+    bottomBox.contents.push(oneLineSubComponent("更新日", updatedAt));
   }
   return {
     type: "bubble",
-    body: {
-      type: "box",
-      layout: "vertical",
-      contents: bubbleContents,
-      spacing: "md",
-    },
+    body: betweenBox(
+      topBox,
+      bottomBox,
+    ),
     footer: {
       type: "box",
       layout: "vertical",
@@ -88,7 +98,7 @@ function createArticleBubble(article: Article): FlexBubble {
  * @return {FlexBox}
  */
 function createArticleBubbleTop(category: string, articlePlatForm: "Qiita" | "Zenn"): FlexBox {
-  const uri = articlePlatForm === "Qiita" ? qiitaUrl : zennUrl;
+  const uri = articlePlatForm === "Qiita" ? socialAccountUrl.qiita : socialAccountUrl.zenn;
   return {
     type: "box",
     layout: "baseline",
