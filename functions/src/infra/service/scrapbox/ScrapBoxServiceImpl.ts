@@ -1,6 +1,6 @@
-import * as functions from "firebase-functions";
 import {ScrapBoxService} from "./ScrapBoxService";
 import {ScrapBoxPageResponse} from "../../dataModel/ScrapBox";
+import {connectSid, projectName} from "../../../env/scrapBox";
 
 /**
  * ScrapBoxServiceの実装クラス
@@ -13,8 +13,8 @@ export default class ScrapBoxServiceImpl implements ScrapBoxService {
    * @constructor
    */
   constructor() {
-    this.projectName = functions.config().scrapbox.project_name;
-    this.connectionSid = functions.config().scrapbox.connect_sid;
+    this.projectName = projectName;
+    this.connectionSid = connectSid;
   }
   /**
    * ScrapBoxのページをランダムに取得する

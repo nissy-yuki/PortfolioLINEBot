@@ -2,6 +2,7 @@ import {DependencyContainer} from "tsyringe";
 import RichMenuRepositoryImpl from "../infra/repository/RichMenuRepositoryImpl";
 import LineClientServiceImpl from "../infra/service/line/LineClientServiceImpl";
 import {Client} from "@line/bot-sdk";
+import {channelAccessToken} from "../env/line";
 
 /**
  * リッチメニュー周りのDI
@@ -16,7 +17,7 @@ export default function richMenuModule(container: DependencyContainer) {
   });
   container.register("LineClient", {
     useValue: new Client({
-      channelAccessToken: "",
+      channelAccessToken: channelAccessToken,
     }),
   });
 }

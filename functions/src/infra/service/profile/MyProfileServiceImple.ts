@@ -1,7 +1,7 @@
 import {injectable} from "tsyringe";
 import {MyProfile} from "../../../domain/dataModel/MyProfile";
 import {MyProfileService} from "./MyProfileService";
-import {githubUrl, qiitaUrl, twitterUrl, zennUrl} from "../../../resource/social";
+import {socialAccountUrl, socialIconUrl} from "../../../resource/social";
 
 @injectable()
 /**
@@ -22,27 +22,27 @@ export class MyProfileServiceImpl implements MyProfileService {
       accounts: [
         {
           name: "@nissy2438",
-          url: twitterUrl,
+          url: socialAccountUrl.twitter,
           serviceName: "X",
-          iconUrl: "https://gyazo.com/26446d078a0546e3b967fddf5a630624",
+          iconUrl: socialIconUrl.twitter,
         },
         {
           name: "nisi-yuki",
-          url: githubUrl,
+          url: socialAccountUrl.github,
           serviceName: "GitHub",
-          iconUrl: "https://gyazo.com/8a48cc20c8e120c91d1e3bbcc6100dcf",
+          iconUrl: socialIconUrl.github,
         },
         {
           name: "nissy243",
-          url: qiitaUrl,
+          url: socialAccountUrl.qiita,
           serviceName: "Qiita",
-          iconUrl: "https://gyazo.com/7240b2067f55076ac8a8207f5d6f04d3",
+          iconUrl: socialIconUrl.qiita,
         },
         {
           name: "nisisippi",
-          url: zennUrl,
+          url: socialAccountUrl.zenn,
           serviceName: "Zenn",
-          iconUrl: "https://gyazo.com/e27a8e4a5e7023d9bee103d4298f8984",
+          iconUrl: socialIconUrl.zenn,
         },
       ],
       skills: [

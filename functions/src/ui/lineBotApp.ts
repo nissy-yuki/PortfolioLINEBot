@@ -1,13 +1,13 @@
-import * as functions from "firebase-functions";
 import * as express from "express";
 import * as line from "@line/bot-sdk";
 import {isMessageEvent, isReplyableEvent, isTextMessage} from "./typeCheck";
 import UnsupportedHandlerFactory from "./handler/UnsupportedHandlerFactory";
 import MessageHandlerFactory from "./handler/MessageHandlerFactory";
+import {channelAccessToken, channelSecret} from "../env/line";
 
 const config = {
-  channelSecret: functions.config().line.channel_secret || "",
-  channelAccessToken: functions.config().line.channel_access_token || "",
+  channelSecret: channelSecret,
+  channelAccessToken: channelAccessToken,
 };
 
 const client = new line.Client(config);
@@ -47,7 +47,7 @@ async function handleEvent(event: line.WebhookEvent) {
     const message = await handler.getMessage().catch((e): line.Message => {
       return {
         type: "text",
-        text: e,
+        text: e || "error",
       };
     });
     return client.replyMessage(event.replyToken, message);
