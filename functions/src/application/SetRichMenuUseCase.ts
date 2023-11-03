@@ -1,5 +1,5 @@
 import {inject, injectable} from "tsyringe";
-import {RichMenuRepository} from "../domain/repository/RichMenuRepository";
+import {LineClientRepository} from "../domain/repository/LineClientRepository";
 
 @injectable()
 /**
@@ -10,13 +10,13 @@ export default class SetRichMenuUseCase {
    * @constructor
    */
   constructor(
-    @inject("RichMenuRepository")
-    private readonly richMenuRepository: RichMenuRepository
+    @inject("LineClientRepository")
+    private readonly lineClientRepository: LineClientRepository
   ) {}
   /**
    * リッチメニューを設定する
    */
   async execute() {
-    await this.richMenuRepository.setDefaultRichMenu();
+    await this.lineClientRepository.setDefaultRichMenu();
   }
 }
