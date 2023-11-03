@@ -1,8 +1,8 @@
 import {container} from "tsyringe";
-import myProfileModule from "../../di/MyProfileModule";
+import myProfileModule from "../../../di/MyProfileModule";
 import {ReplyHandler} from "./ReplyHandler";
 import {Message} from "@line/bot-sdk";
-import FetchMyProfileMessageUseCase from "../../application/FetchMyProfileMessageUseCase";
+import FetchMyProfileMessageUseCase from "../../../application/FetchMyProfileMessageUseCase";
 
 /**
  * プロフィールを表示する

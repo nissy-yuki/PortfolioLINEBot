@@ -1,7 +1,7 @@
 import {container} from "tsyringe";
-import repositoryModule from "../../di/RepositoryModule";
+import repositoryModule from "../../../di/RepositoryModule";
 import {ReplyHandler} from "./ReplyHandler";
-import FetchRepositoriesMessageUseCase from "../../application/FetchRepositoriesMessageUseCase";
+import FetchRepositoriesMessageUseCase from "../../../application/FetchRepositoriesMessageUseCase";
 import {Message} from "@line/bot-sdk";
 
 /**

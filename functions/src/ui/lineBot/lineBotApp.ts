@@ -3,7 +3,7 @@ import * as line from "@line/bot-sdk";
 import {isMessageEvent, isReplyableEvent, isTextMessage} from "./typeCheck";
 import UnsupportedHandlerFactory from "./handler/UnsupportedHandlerFactory";
 import MessageHandlerFactory from "./handler/MessageHandlerFactory";
-import {channelAccessToken, channelSecret} from "../env/line";
+import {channelAccessToken, channelSecret} from "../../env/line";
 
 const config = {
   channelSecret: channelSecret,

@@ -1,8 +1,8 @@
 import {Message} from "@line/bot-sdk";
 import {ReplyHandler} from "./ReplyHandler";
-import FetchArticleMessageUseCase from "../../application/FetchArticleCarouselUseCase";
+import FetchArticleMessageUseCase from "../../../application/FetchArticleCarouselUseCase";
 import {container} from "tsyringe";
-import articleModule from "../../di/ArticleModule";
+import articleModule from "../../../di/ArticleModule";
 
 /**
  * 記事を表示する
