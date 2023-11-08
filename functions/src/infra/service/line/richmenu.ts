@@ -1,5 +1,6 @@
 import {Area, MessageAction, RichMenu} from "@line/bot-sdk";
 import {richmenuMessage} from "../../../resource/message";
+import {liffUrl} from "../../../env/line";
 
 const horizontalQuarterBound = (x: number, y: number): Area => ({
   x,
@@ -43,7 +44,10 @@ export const HOME_RICH_MENU: RichMenu = {
     },
     {
       bounds: horizontalQuarterHalfBound(1875, 0),
-      action: messageAction(richmenuMessage.contact),
+      action: {
+        type: "uri",
+        uri: liffUrl,
+      },
     },
     {
       bounds: horizontalQuarterHalfBound(1875, 421),

@@ -1,8 +1,8 @@
 import {Message} from "@line/bot-sdk";
 import {ReplyHandler} from "./ReplyHandler";
-import triviaModule from "../../di/TriviaModule";
+import triviaModule from "../../../di/TriviaModule";
 import {container} from "tsyringe";
-import FetchTriviaMessageUseCase from "../../application/FetchTriviaMessageUseCase";
+import FetchTriviaMessageUseCase from "../../../application/FetchTriviaMessageUseCase";
 
 /**
  * トリビアを表示する

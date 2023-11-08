@@ -19,3 +19,6 @@ $ firebase deploy --only functions
 ### hosting
 
 ### rich-menu
+```
+$ npx ts-node ./functions/src/ui/console/setRichMenu.ts
+```

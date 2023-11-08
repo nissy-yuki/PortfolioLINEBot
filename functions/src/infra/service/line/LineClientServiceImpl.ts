@@ -17,6 +17,17 @@ export default class LineClientServiceImpl implements LineClientService {
     private readonly lineClient: Client
   ) {}
   /**
+   * メッセージを送信する
+   * @param {string} userId - ユーザーID
+   * @param {string} message - メッセージ
+   */
+  async pushMessage(userId: string, message: string): Promise<void> {
+    await this.lineClient.pushMessage(userId, {
+      type: "text",
+      text: message,
+    });
+  }
+  /**
    * リッチメニューを設定する
    */
   async setDefaultRichMenu(): Promise<void> {

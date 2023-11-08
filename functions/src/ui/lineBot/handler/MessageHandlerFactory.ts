@@ -4,7 +4,7 @@ import {ReplyHandler} from "./ReplyHandler";
 import ArticleHandler from "./ArticleHandler";
 import MyProfileHandler from "./MyProfileHandler";
 import TriviaHandler from "./TriviaHandler";
-import {richmenuMessage} from "../../resource/message";
+import {richmenuMessage} from "../../../resource/message";
 import RepositoryHandler from "./RepositoryHandler";
 
 /**
