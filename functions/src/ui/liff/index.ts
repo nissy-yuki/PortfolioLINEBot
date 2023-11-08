@@ -1,16 +1,14 @@
 import * as express from "express";
-import * as admin from "firebase-admin";
 import {container} from "tsyringe";
 import SendMessageUseCase from "../../application/PushMessageUseCase";
 import lineClientModule from "../../di/LineClientModule";
 import {ownerId} from "../../env/line";
+import {hostingUrl} from "../../env/firebase";
 
 export const liffApp = express();
 
-admin.initializeApp();
-
 liffApp.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://"+admin.instanceId().app.options.projectId+".web.app");
+  res.setHeader("Access-Control-Allow-Origin", hostingUrl);
   res.setHeader(
     "Access-Control-Allow-Methods",
     "POST,OPTIONS"
