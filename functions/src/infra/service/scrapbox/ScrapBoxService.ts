@@ -1,4 +1,4 @@
-import {ScrapBoxPageResponse} from "../../dataModel/ScrapBox";
+import {ScrapBoxPageResponse} from "../../dataModel/scrapBox";
 
 export interface ScrapBoxService {
   fetchRandomPage(): Promise<ScrapBoxPageResponse>;

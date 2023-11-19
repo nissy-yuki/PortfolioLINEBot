@@ -2,7 +2,7 @@ import {inject, injectable} from "tsyringe";
 import {TriviaRepository} from "../../domain/repository/TriviaRepository";
 import {ScrapBoxService} from "../service/scrapbox/ScrapBoxService";
 import {Trivia} from "../../domain/dataModel/Trivia";
-import {Line} from "../dataModel/ScrapBox";
+import {Line} from "../dataModel/scrapBox";
 
 @injectable()
 /**
