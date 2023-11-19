@@ -1,6 +1,6 @@
 import {FlexBox} from "@line/bot-sdk";
 
-export const pairText = (
+export const oneLinePairText = (
   mainLabel: string,
   subLabel: string
 ): FlexBox => ({
@@ -21,4 +21,23 @@ export const pairText = (
     },
   ],
   spacing: "sm",
+});
+
+export const indentionPairText = (
+  title: string,
+  content: string
+): FlexBox => ({
+  type: "box",
+  layout: "vertical",
+  contents: [
+    {
+      type: "text",
+      text: title,
+      color: "#aaaaaa",
+    },
+    {
+      type: "text",
+      text: content,
+    },
+  ],
 });
