@@ -1,6 +1,7 @@
 import {DependencyContainer} from "tsyringe";
+import {accessToken} from "../env/notion";
 import MyProfileRepositoryImpl from "../infra/repository/MyProfileRepositoryImpl";
-import {MyProfileServiceImpl} from "../infra/service/profile/MyProfileServiceImple";
+import NotionServiceImpl from "../infra/service/notion/NotionServiceImpl";
 
 /**
  * プロフィール周りのDI
@@ -10,7 +11,10 @@ export default function myProfileModule(container: DependencyContainer) {
   container.register("MyProfileRepository", {
     useClass: MyProfileRepositoryImpl,
   });
-  container.register("MyProfileService", {
-    useClass: MyProfileServiceImpl,
+  container.register("NotionService", {
+    useClass: NotionServiceImpl,
+  });
+  container.register("NotionAccessToken", {
+    useValue: accessToken,
   });
 }

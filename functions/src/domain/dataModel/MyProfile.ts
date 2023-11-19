@@ -1,22 +1,31 @@
 export type MyProfile = {
-  name: string;
-  imageUrl: string;
-  occupation: string;
-  description: string;
+  detail: ProfileDetail;
   accounts: Account[];
   skills: Skill[];
   careers: Career[];
 }
 
+export type ProfileDetail = {
+  name: string;
+  imageUrl: string;
+  occupation: string;
+  description: string;
+  affiliation: string;
+  affiliation_url: string;
+  hobby: string;
+  mail: string;
+}
+
 export type Account = {
   name: string;
   url: string;
-  serviceName: string;
-  iconUrl: string;
+  service: string;
+  icon: string;
 }
 
 export type Career = {
-  date: Date;
+  year: string;
+  month: string;
   event: string;
 }
 

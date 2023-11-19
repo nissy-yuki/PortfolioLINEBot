@@ -1,7 +1,7 @@
 import {inject, injectable} from "tsyringe";
 import {MyProfileRepository} from "../../domain/repository/MyProfileRepository";
-import {MyProfileService} from "../service/profile/MyProfileService";
 import {MyProfile} from "../../domain/dataModel/MyProfile";
+import {NotionService} from "../service/notion/NotionService";
 
 @injectable()
 /**
@@ -13,14 +13,22 @@ export default class MyProfileRepositoryImpl implements MyProfileRepository {
    * @constructor
    */
   constructor(
-    @inject("MyProfileService")
-    private readonly service : MyProfileService
+    @inject("NotionService")
+    private readonly service : NotionService,
   ) {}
   /**
    * プロフィールを取得する
    * @return {Promise<MyProfile>}
    */
-  async get(): Promise<MyProfile> {
-    return this.service.getProfile();
+  async fetchMyProfile(): Promise<MyProfile> {
+    const detail = await this.service.fetchProfile();
+    const accounts = await this.service.fetchAccount();
+    const careers = await this.service.fetchCareer();
+    return {
+      detail: detail,
+      accounts: accounts,
+      careers: careers,
+      skills: [],
+    };
   }
 }
