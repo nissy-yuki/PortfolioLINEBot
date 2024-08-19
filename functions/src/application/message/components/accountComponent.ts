@@ -14,7 +14,7 @@ export default function accountComponent(account: Account): FlexBox {
     contents: [
       {
         type: "icon",
-        url: account.iconUrl+".png",
+        url: account.icon+".png",
         size: "md",
       },
       urlText(account.name, account.url, "md", "md"),

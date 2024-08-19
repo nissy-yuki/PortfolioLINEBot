@@ -20,7 +20,12 @@ export default class FetchMyProfileMessageUseCase {
    * @return {Promise<Message>} - プロフィールメッセージ
    */
   async excute(): Promise<Message> {
-    const profile = await this.repository.get();
+    const profile = await this.repository.fetchMyProfile().then((profile) => {
+      return profile;
+    }).catch((error) => {
+      console.error(error);
+      throw new Error("プロフィールの取得に失敗しました");
+    });
     return createProfileMessage(profile);
   }
 }
