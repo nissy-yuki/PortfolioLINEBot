@@ -62,7 +62,7 @@ function createArticleBubble(article: Article): FlexBubble {
   topBox.contents.push(createArticleBubbleTop("記事", article.platform));
   topBox.contents.push(titleText(article.title));
   if (article.tags.length !== 0) topBox.contents.push(tagsComponent(article.tags));
-  if (article.body !== "") topBox.contents.push(primaryText(article.body, 4, true));
+  if (article.body !== "") topBox.contents.push(primaryText(article.body.slice(0, 100), 4, true));
   const bottomBox: FlexBox = {
     type: "box",
     layout: "vertical",
